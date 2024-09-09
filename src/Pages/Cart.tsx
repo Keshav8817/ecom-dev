@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Layout from '../Componets/Layout'
 import { useSelector } from 'react-redux'
 
@@ -28,8 +28,8 @@ const Cart = () => {
     //    setCartProducts(array)
     // }
 
-    const HandleUpdateCost = (array, id, newQuantity) => {
-        const updatedArray = array.map(item => {
+    const HandleUpdateCost = (array:any, id:any, newQuantity:any) => {
+        const updatedArray = array.map((item:any) => {
           if (item.id === id) {
             return { ...item, quantity: newQuantity };
           }
@@ -39,9 +39,9 @@ const Cart = () => {
         setCartProducts(updatedArray);
       };
 
-      function calculateTotalPrice(items) {
+      function calculateTotalPrice(items:any) {
         // Use reduce to accumulate the total price
-        const totalPrice = items.reduce((total, item) => {
+        const totalPrice = items.reduce((total:any, item:any) => {
           // Convert Price to a number and multiply by quantity
           const itemTotal = Number(item.Price) * item.quantity;
           

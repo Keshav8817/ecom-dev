@@ -1,10 +1,10 @@
-import { useState } from "react"
+// import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   const nevigate = useNavigate()
 
-  const [currentForm , setCurrentForm] = useState("Login")
+  // const [currentForm , setCurrentForm] = useState("Login")
 
   const HandleLogin = () => {
     nevigate("/")
