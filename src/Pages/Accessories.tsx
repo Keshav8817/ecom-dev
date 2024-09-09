@@ -1,9 +1,10 @@
+import Layout from "../Componets/Layout"
 
 const Accessories = () => {
   return (
-    <div>
-      
-    </div>
+    <Layout>
+    <div>Accessories</div>
+    </Layout>
   )
 }
 

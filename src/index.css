@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+.small-container{
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+
+}
+
+.single-product{
+    margin-top: 80px;
+}
+.single-product .col-2 img{
+    padding: 0;
+    border: 1px solid black;
+}
+.single-product .col-2{
+    padding: 20px;
+}
+.single-product h4{
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+.single-product select{
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #070707;
+}
+input:focus{
+outline: none;
+}
+.small-img-row{
+    display: flex;
+    justify-content: space-between;
+    border: 1px black;
+}
+.small-img-col{
+flex-basis: 24%;
+cursor: pointer;
+} */

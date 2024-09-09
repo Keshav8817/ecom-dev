@@ -1,9 +1,10 @@
+import Layout from "../Componets/Layout"
 
 const Womens = () => {
   return (
-    <div>
-      
-    </div>
+    <Layout>
+    <div>NewReleases</div>
+    </Layout>
   )
 }
 

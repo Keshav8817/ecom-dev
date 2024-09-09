@@ -1,4 +1,10 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 const Header = () => {
+
+  const currentVal = useSelector((state:any) => state.cart.cart)
+
   return (
     <div className="bg-amber-200 ">
       <div className="border py-3 px-6">
@@ -23,7 +29,7 @@ const Header = () => {
             </span>
           </div>
           <div className="ml-6 flex flex-1 gap-x-3">
-            <div className="flex cursor-pointer select-none items-center gap-x-2 rounded-md border bg-purple-blue-500 py-2 px-4 text-white hover:bg-blue-500">
+            {/* <div className="flex cursor-pointer select-none items-center gap-x-2 rounded-md border bg-purple-blue-500 py-2 px-4 text-white hover:bg-blue-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -39,7 +45,7 @@ const Header = () => {
                 />
               </svg>
               <span className="text-sm font-medium">Categories</span>
-            </div>
+            </div> */}
             <input
               type="text"
               className="w-full rounded-md border  px-3 py-2 text-sm"
@@ -61,8 +67,11 @@ const Header = () => {
                   clipRule="evenodd"
                 />
               </svg>
+              <Link to={"/orders"}>
               <span className="text-sm font-medium">Orders</span>
+              </Link>
             </div>
+            <Link to={"/favorites"}>
             <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-100">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +85,11 @@ const Header = () => {
                   clipRule="evenodd"
                 />
               </svg>
+
               <span className="text-sm font-medium">Favorites</span>
             </div>
+            </Link>
+            <Link to={"/cart"}>
             <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-100">
               <div className="relative">
                 <svg
@@ -89,13 +101,15 @@ const Header = () => {
                   <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                 </svg>
                 <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
-                  3
+                  {currentVal.length}
                 </span>
               </div>
               <span className="text-sm font-medium">Cart</span>
             </div>
+            </Link>
             <div className="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-3 bg-cyan-500 hover:bg-cyan-600 ">
-            <a className="text-sm font-medium" href="/signIn">Sign In</a>
+            {/* <a className="text-sm font-medium" href="/signIn">Sign In</a> */}
+            <Link to={"/login"} className="text-sm font-medium">Sign In</Link>
             </div>
           </div>
         </div>
@@ -116,45 +130,27 @@ const Header = () => {
             <span className="text-sm font-medium">India</span>
           </div>
           <div className="flex gap-x-8">
-            <a
-              className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
-              href="/"
-            >
-              Home
-            </a>
-            <a
-              className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
-              href="/newReleases"
-            >
-              New Releases
-            </a>
-            <a
-              className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
-              href="/mens"
-            >
-              Men's
-            </a>
-            <a
-              className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
-              href="/womes"
-            >
-              Women's
-            </a>
-            <a
-              className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
-              href="/accessories"
-            >
-              Accessories
-            </a>
-            <a
-              className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
-              href="/abouts"
-            >
-              Abouts
-            </a>
+            <Link to={"/"} className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
+            > Home 
+            </Link>
+            <Link to={"/newReleases"} className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
+            > New Releases 
+            </Link>
+            <Link to={"/mens"} className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
+            > Men's 
+            </Link>
+            <Link to={"/womes"} className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
+            > Women's 
+            </Link>
+            <Link to={"/accessories"} className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
+            > Accessories 
+            </Link>
+            <Link to={"/abouts"} className="cursor-pointer rounded-sm py-1 px-2 text-sm font-medium hover:bg-gray-100"
+            > Abouts 
+            </Link>
           </div>
-            <div className="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-3 bg-cyan-500 hover:bg-cyan-600 ">
-            <a className="text-sm font-medium" href="/signUp">Sign Up</a>
+            <div className="ml-2 flex cursor-pointer items-center gap-x-1  py-2 px-3  ">
+            {/* <a className="text-sm font-medium" href="/signUp">Sign Up</a> */}
           </div>
         </div>
       </div>

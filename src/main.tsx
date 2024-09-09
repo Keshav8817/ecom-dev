@@ -3,16 +3,15 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import Header from "./Componets/Header.tsx";
-import Footer from "./Componets/Footer.tsx";
+import { Provider } from "react-redux";
+import store from "./Redux/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Header />
+    <Provider store={store}>
       <App />
-  
-      <Footer />
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
