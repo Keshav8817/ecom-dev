@@ -1,18 +1,19 @@
-import BrandSection from "../Componets/BrandSection"
+import BannerProducts from "../Componets/BannerProducts"
 import FeatureCard from "../Componets/FeatureCard"
-import HeroSection from "../Componets/HeroSection"
 import Layout from "../Componets/Layout"
 import ProductCard from "../Componets/ProductCard"
-import ServiceApp from "../Componets/ServiceApp"
+import ProductCategory from "./ProductCategory"
 
 const Home = ()  => {
     return (
         <Layout>
-        <HeroSection />
+          <ProductCategory/>
+          <BannerProducts/>
+        {/* <HeroSection /> */}
         <ProductCard />
-        <BrandSection />
-        <FeatureCard />
-        <ServiceApp />
+        {/* <BrandSection /> */}
+        <FeatureCard title={"Customers also purchased "} />
+        {/* <ServiceApp /> */}
       </Layout>
     )
 }

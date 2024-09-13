@@ -1,11 +1,11 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="	bg-amber-200	 font-sans dark:bg-gray-900">
+      <footer className="	bg-gradient-to-r from-gray-800 to-gray-400 font-sans pt-4 ">
         <div className="container px-6 py-6 mx-auto">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
             <div className="sm:col-span-2">
-              <h1 className="max-w-lg text-xl font-semibold text-sm font-medium tracking-tight text-gray-800 xl:text-2xl dark:text-white">
+              <h1 className="max-w-lg text-xl font-semibold text-sm font-medium tracking-tight text-white xl:text-2xl dark:text-white">
                 Subscribe our Shoping-App to get an update.
               </h1>
               <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
@@ -21,33 +21,33 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <p className="font-semibold text-gray-800 dark:text-white">
+              <p className="font-semibold text-white">
                 Quick Link
               </p>
               <div className="flex flex-col  items-start mt-5 space-y-2 ">
-                <p className="text-gray-600 text-sm font-medium font-sans transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400  hover:cursor-pointer hover:text-blue-500">
+                <p className="text-white text-sm font-medium font-sans transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400  hover:cursor-pointer hover:text-blue-500">
                   Home
                 </p>
-                <p className="text-gray-600 text-sm font-medium transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400  hover:cursor-pointer hover:text-blue-500">
+                <p className="text-white text-sm font-medium transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400  hover:cursor-pointer hover:text-blue-500">
                   Who We Are
                 </p>
-                <p className="text-gray-600 text-sm font-medium transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
+                <p className="text-white text-sm font-medium transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
                   Our Philosophy
                 </p>
               </div>
             </div>
             <div>
-              <p className="font-semibold text-gray-800 dark:text-white">
+              <p className="font-semibold text-white dark:text-white">
                 Industries
               </p>
               <div className="flex flex-col items-start mt-5 space-y-2">
-                <p className=" text-sm font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
+                <p className=" text-sm font-medium text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
                   Retail &amp; E-Commerce
                 </p>
-                <p className=" text-sm font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
+                <p className=" text-sm font-medium text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
                   Information Technology
                 </p>
-                <p className=" text-sm font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
+                <p className=" text-sm font-medium text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:cursor-pointer hover:text-blue-500">
                   Finance &amp; Insurance
                 </p>
               </div>
@@ -111,7 +111,7 @@ const Footer = () => {
               />
             </div>
           </div>
-          <p className="text-sm font-medium p-4 text-start md:text-center md:text-lg md:p-4">
+          <p className="text-sm font-medium  text-start md:text-center md:text-lg text-white">
             © 2023 You Company Inc. All rights reserved.
           </p>
         </div>

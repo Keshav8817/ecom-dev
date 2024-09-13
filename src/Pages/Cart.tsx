@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from '../Componets/Layout'
 import { useSelector } from 'react-redux'
+import { MdDelete } from 'react-icons/md'
 
 const Cart = () => {
 
@@ -13,121 +14,146 @@ const Cart = () => {
         return total.toFixed(2);
     };
 
-    // const HandleUpdateCost = (array,  id , newName) => {
-    //     const obj = array.find(item => item.id === id);
-  
-    //     // Check if the object is found
-    //     if (obj) {
-    //       obj.quantity = newName; // Update the name property
-    //       console.log(`Object with id ${id} has been updated to:`, obj);
-    //     } else {
-    //       console.log(`Object with id ${id} not found.`);
-    //     }
-      
-    //     // Return the updated array
-    //    setCartProducts(array)
-    // }
+    useEffect(() => {
+        setCartProducts(Products)
+    }, [Products])
 
-    const HandleUpdateCost = (array:any, id:any, newQuantity:any) => {
-        const updatedArray = array.map((item:any) => {
-          if (item.id === id) {
-            return { ...item, quantity: newQuantity };
-          }
-          return item;
-        });
-    
-        setCartProducts(updatedArray);
-      };
+    const HandleUpdateCost = (array: any, id: any, newQuantity: any) => {
+        if (newQuantity > 0) {
+            const updatedArray = array.map((item: any) => {
+                if (item.id === id) {
+                    return { ...item, quantity: Number(newQuantity) }; // Ensure newQuantity is a number
+                }
+                return item;
+            });
 
-      function calculateTotalPrice(items:any) {
+            setCartProducts(updatedArray);
+        }
+    };
+
+
+    function calculateTotalPrice(items: any) {
+        let totalprice = {
+            price: 0,
+            quantity: 0
+
+        }
         // Use reduce to accumulate the total price
-        const totalPrice = items.reduce((total:any, item:any) => {
-          // Convert Price to a number and multiply by quantity
-          const itemTotal = Number(item.Price) * item.quantity;
-          
-          // Add the item's total to the running total
-          return total + itemTotal;
+        const totalPrice = items.reduce((total: any, item: any) => {
+            // Convert Price to a number and multiply by quantity
+            const itemTotal = Number(item.Price) * item.quantity;
+
+            totalprice = {
+                price: total + itemTotal,
+                quantity: item.quantity
+            }
+
+            // Add the item's total to the running total
+            return totalprice;
         }, 0); // Initial value of total is 0
-      
+
         return totalPrice;
-      }
-      
+    }
+
+    const totaalQuantity = cartProducts.reduce((total: any, item: any) => total + item.quantity, 0)
+    const totalPrice = cartProducts.reduce((preve: any, curr: any) => preve + (curr.quantity * curr?.Price), 0)
+
 
 
 
 
     return (
         <Layout>
-            <div className="mt-[40px] px-[25px]  ">
-                <table className='w-[100%] '>
-                    <tr className='bg-amber-200 text-left'>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                    </tr>
+            <div className='flex min-h-96 container mx-auto p-4 '>
 
-                    {cartProducts?.map((item: any) => (
-                        <tr>
-                            <td className='py-[10px] px-[5px]'>
-                                <div className="flex flex-wrap">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" width={50} height={10} />
-                                    <div className='ml-[20px]'>
-                                        <p>{item?.Name}</p>
-                                        <small>{item?.Price}</small><br />
-                                        <small className='text-rose-600 cursor-pointer'>Remove from cart</small>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input type="number" value={item?.quantity} className='border-2 border-black w-[50px]' onChange={(e)=> HandleUpdateCost(cartProducts , item?.id , e.target.value  )} /></td>
-                            <td>{HandleItemTotal(item)}</td>
-                        </tr>
-                    ))}
 
-                    {/* <tr>
-                <td>
-                    <div className="flex flex-wrap">
-                        <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" width={50} height={10}/>
-                        <div className='ml-[20px]'>
-                            <p>Red Printed T-shirt</p>
-                            <small>Price</small><br/>
-                            <small className='text-rose-600 cursor-pointer'>Remove from cart</small>
-                        </div>
+
+                <div className='bg-white w-3/4 px-4'>
+                    <div className='border-grey-600 border-b-2 p-2'>
+                        <h1 className=' px-6 font-semibold text-2xl  mt-4 pt-4 '>Shopping Cart</h1>
                     </div>
-                </td>
-                <td><input type="number" value="1"  className='border-2 border-black w-[50px]'/></td>
-                <td>$50.00</td> 
-            </tr>
-            <tr>
-                <td>
-                    <div className="flex flex-wrap">
-                        <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" width={50} height={10}/>
-                        <div className='ml-[20px]'>
-                            <p>Red Printed T-shirt</p>
-                            <small>Price</small><br/>
-                             <small className='text-rose-600 cursor-pointer'>Remove from cart</small>
-                        </div>
+
+                    <div className='text-center text-lg my-3'>
+                        {
+                            cartProducts.length === 0 && (
+                                <p className='bg-white py-5'>No Item In Cart</p>
+                            )
+                        }
                     </div>
-                </td>
-                <td><input type="number" value="1"  className='border-2 border-black w-[50px]'/></td>
-                <td>$50.00</td> 
-            </tr> */}
-                </table>
-                <div className="flex justify-end">
-                    <table className='border-t-4 border-amber-200 w-[100%] max-w-sm  '>
-                        <tr>
-                            <td>Subtotal</td>
-                            <td className='text-right'>${(calculateTotalPrice(cartProducts)).toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td>Tax</td>
-                            <td className='text-right'>${((calculateTotalPrice(cartProducts)*18)/100).toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td className='text-right'>${(calculateTotalPrice(cartProducts) + 27.00).toFixed(2) }</td>
-                        </tr>
-                    </table>
+
+                    <div className='flex flex-col lg:flex-row gap-10 lg:justify-between p-4'>
+                        {/***view product */}
+                        <div className='w-full max-w-6xl'>
+                            {
+                                cartProducts.map((product: any, index: number) => {
+                                    return (
+                                        <div key={product?._id + "Add To Cart Loading"} className='w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]'>
+                                            <div className='w-32 h-32 bg-slate-200'>
+                                                <img src={product?.imageSrc} className='w-full h-full object-scale-down mix-blend-multiply' />
+                                            </div>
+                                            <div className='px-4 py-2 relative'>
+                                                <h2 className='text-lg lg:text-xl text-ellipsis line-clamp-1'>{product?.Name}</h2>
+                                                <div className='flex items-center justify-between'>
+                                                    <p className='text-red-600 font-medium text-lg'>{product?.Price}</p>
+                                                    <p className='text-slate-600 font-semibold text-lg'>{product?.Price * product?.quantity}</p>
+                                                </div>
+                                                <div className='flex justify-between w-[30%] items-center '>
+                                                    <div className='flex items-center gap-3 mt-1 border border-slate-200 max-w-[110px] rounded-full p-2'>
+                                                        Qty:
+                                                        <input type="number" value={product?.quantity} className='outline-none w-[50px] pl-2 rounded-full no-arrows ' onChange={(e) => HandleUpdateCost(cartProducts, product?.id, e.target.value)} />
+                                                    </div>
+                                                    <div className='text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer flex items-center justify-between '>
+                                                        <h6 className='pr-1'>Remove Item</h6>  <MdDelete />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+
+                        </div>
+
+
+                        {/***summary  */}
+                    </div>
+                    <div className='border-grey-600 border-t-2 p-2 text-right w-full'>
+                        <h1 className=' px-6 font-semibold text-xl  my-4  '>{`Subtotal (${totaalQuantity || 0} item): ₹ ${totalPrice || 0}`}</h1>
+                    </div>
                 </div>
+
+                <div className="max-w-sm mx-auto bg-white h-96 shadow-md rounded-lg p-6">
+                    <h2 className="text-xl font-semibold mb-4">Price Details</h2>
+                    <div className="space-y-2">
+                        <div className="flex justify-between">
+                            <span>Price {`( ${totaalQuantity || 0} Item)`}</span>
+                            <span>₹{totalPrice || 0}</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Discount</span>
+                            <span className="text-green-500">– 0</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Platform Fee</span>
+                            <span>₹0</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Delivery Charges</span>
+                            <span className="line-through text-gray-400">₹40</span>
+                            <span className="text-green-500">Free</span>
+                        </div>
+                        <hr className="my-2" />
+                        <div className="flex justify-between font-semibold text-lg">
+                            <span>Total Amount</span>
+                            <span>₹{totalPrice || 0}</span>
+                        </div>
+                        <p className="text-green-500 text-sm mt-2">You will save ₹348 on this order</p>
+                        <div className='mt-[45px]'>
+                            <button className='bg-blue-600 p-2 text-white rounded-full w-full '>Check-out</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </Layout>
     )

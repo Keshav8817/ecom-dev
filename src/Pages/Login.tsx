@@ -1,9 +1,11 @@
 // import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { HiEye, HiEyeOff } from "react-icons/hi"
+import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {
   const nevigate = useNavigate()
-
+ const [viewPassword , setViewPassword] = useState(false)
   // const [currentForm , setCurrentForm] = useState("Login")
 
   const HandleLogin = () => {
@@ -13,93 +15,115 @@ const Login = () => {
   return (
     
 
-    // <div className="w-[100%] h-[100vh] flex justify-center items-center ">
-    // <div className="border w-[500px] p-4">
-    //   <div className="flex justify-around  w-full">
-    //     <h6 className= { currentForm === "Login" ? "border-b-4 border-indigo-500 px-4 cursor-pointer" : "cursor-pointer"} onClick={() => setCurrentForm("Login")}>Login</h6>
-    //     <h6 className={ currentForm === "Register" ? "border-b-4 border-indigo-500 px-4 cursor-pointer" : "cursor-pointer"} onClick={() => setCurrentForm("Register")}>Register</h6>
-    //   </div>
-    //   <div className="flex justify-center items-center flex-col gap-2 mt-10">
-    //   <input className= "border" value={""} type="text" placeholder="User Name"/>
-    //   <input className= "border" value={""} type="text" placeholder="Password"/>
-      
-    //   <button className="border mt-4 px-4 py-2" onClick={HandleLogin}>Login</button>
-    //   </div>
-    // </div>
-    // </div>
-    <>
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img
-        alt="Your Company"
-        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-        className="mx-auto h-10 w-auto"
-      />
-      <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-        Sign in to your account
-      </h2>
-    </div>
+//     <>
+//     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+//     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+//       <img
+//         alt="Your Company"
+//         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+//         className="mx-auto h-10 w-auto"
+//       />
+//       <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+//         <img src="public/signIcon.gif"/>
+//         Sign in to your account
+//       </h2>
+//     </div>
 
-    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form action="#" method="POST" className="space-y-6">
+//     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+//       <form action="#" method="POST" className="space-y-6">
+//         <div>
+//           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+//             Email address
+//           </label>
+//           <div className="mt-2">
+//             <input
+//               id="email"
+//               name="email"
+//               type="email"
+//               required
+//               autoComplete="email"
+//               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+//             />
+//           </div>
+//         </div>
+
+//         <div>
+//           <div className="flex items-center justify-between">
+//             <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+//               Password
+//             </label>
+//             <div className="text-sm">
+//               <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+//                 Forgot password?
+//               </a>
+//             </div>
+//           </div>
+//           <div className="mt-2">
+//             <input
+//               id="password"
+//               name="password"
+//               type="password"
+//               required
+//               autoComplete="current-password"
+//               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+//             />
+//           </div>
+//         </div>
+
+//         <div>
+//           <button
+//             onClick={HandleLogin}
+//             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+//           >
+//             Sign in
+//           </button>
+//         </div>
+//       </form>
+
+//       <p className="mt-10 text-center text-sm text-gray-500">
+//         Not a member?{' '}
+//         <a href="#"   className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+//           Register Here
+//         </a>
+//       </p>
+//     </div>
+//   </div>
+// </>
+<section id="login">
+  <div className="mx-auto container p-4">
+    <div className="bg-white p-2 w-full max-w-md mx-auto py-5 ">
+      <div className="w-20 h-20 mx-auto">
+      <img src="public/signIcon.gif" alt="login"/>
+      </div>
+      <form>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-            Email address
-          </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
+          <label>Email :</label>
+          <div className="bg-slate-200 p-2">
+          <input type="text" placeholder="Enter Your Email" className="w-full h-full outline-none bg-transparent"></input>
           </div>
         </div>
-
         <div>
-          <div className="flex items-center justify-between">
-            <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-              Password
-            </label>
-            <div className="text-sm">
-              <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                Forgot password?
-              </a>
-            </div>
+          <label>Password :</label>
+          <div className="bg-slate-200 p-2 flex">
+          <input type={viewPassword ? "text" :"password"} placeholder="Enter Your Password" className="w-full h-full outline-none bg-transparent"></input>
+          <span className="cursor-pointer">
+            {
+              viewPassword ? <HiEyeOff onClick={()=> setViewPassword(false)}  /> : <HiEye onClick={()=> setViewPassword(true)} /> 
+             }
+          
+          </span>
           </div>
-          <div className="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              autoComplete="current-password"
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
+          <Link to="/" className="block w-fit ml-auto hover:underline hover:text-red-600">
+            Forgot Password
+          </Link>
         </div>
-
-        <div>
-          <button
-            onClick={HandleLogin}
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Sign in
-          </button>
-        </div>
+        
+         <button className="bg-red-600 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6" onClick={HandleLogin}>Login</button>
+        
       </form>
-
-      <p className="mt-10 text-center text-sm text-gray-500">
-        Not a member?{' '}
-        <a href="#"   className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-          Register Here
-        </a>
-      </p>
     </div>
   </div>
-</>
+</section>
   )
 
 }
