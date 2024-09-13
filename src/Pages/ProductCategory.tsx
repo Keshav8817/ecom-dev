@@ -1,8 +1,7 @@
-import { useState } from "react"
 
 const ProductCategory = () => {
 
-    const [categoryProduct, setCategoryProduct] = useState([
+    const categoryProduct =[
         {
             imgUrl: "/mobilecat.png",
             categoryName: "Mobiles"
@@ -50,7 +49,7 @@ const ProductCategory = () => {
         {
             imgUrl: "/printercat.png",
             categoryName: "Printer"
-        } ])
+        } ]
 
 
 
@@ -58,7 +57,7 @@ const ProductCategory = () => {
         <div className='container mx-auto p-4'>
             <div className="flex items-center gap-4 justify-between ">
                 {
-                    categoryProduct?.map((item, index) => {
+                    categoryProduct?.map((item) => {
                         return (
                             <div className="flex flex-col items-center justify-center">
                                 <div className="w-16 h-16 md:h-20 md:w-20 rounded-full overflow-hidden p-4 bg-white  cursor-pointer">

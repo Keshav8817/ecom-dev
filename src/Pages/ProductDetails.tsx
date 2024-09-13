@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { FaStar, FaStarHalf } from "react-icons/fa"
-import featureCard from "../Componets/FeatureCard"
 import FeatureCard from "../Componets/FeatureCard"
 
 
@@ -57,7 +56,6 @@ const ProductDetails = () => {
   )
   const id = useParams()
   const currentVal: any = useSelector((state: any) => state.cart.products)
-  const [quantity, setQuantity] = useState(1)
 
   const filterData = () => {
     const newData = currentVal.filter((item: any) => item.id == id.id)
@@ -97,7 +95,7 @@ const ProductDetails = () => {
       imageSrc: data?.imageSrc,
       Price: data?.Price,
       Name: data?.Name,
-      quantity: quantity
+      quantity: 1
     }))
     toast("Item Added To Cart")
   }
@@ -178,7 +176,7 @@ const ProductDetails = () => {
             <div className='h-full'>
               <div className='flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
                 {
-                  data?.otherImages?.map((imgURL, index) => {
+                  data?.otherImages?.map((imgURL) => {
                     return (
                       <div className='h-20 w-20 bg-slate-200 rounded p-1' key={imgURL}>
                         <img src={imgURL} className='w-full h-full object-scale-down mix-blend-multiply cursor-pointer' onMouseEnter={() => handleMouseEnterProduct(imgURL)} onClick={() => handleMouseEnterProduct(imgURL)} />

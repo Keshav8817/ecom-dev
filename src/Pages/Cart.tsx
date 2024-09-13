@@ -9,10 +9,10 @@ const Cart = () => {
     const [cartProducts, setCartProducts] = useState(Products)
 
 
-    const HandleItemTotal = (item: any) => {
-        const total = Number(item?.quantity) * Number(item?.Price);
-        return total.toFixed(2);
-    };
+    // const HandleItemTotal = (item: any) => {
+    //     const total = Number(item?.quantity) * Number(item?.Price);
+    //     return total.toFixed(2);
+    // };
 
     useEffect(() => {
         setCartProducts(Products)
@@ -32,28 +32,28 @@ const Cart = () => {
     };
 
 
-    function calculateTotalPrice(items: any) {
-        let totalprice = {
-            price: 0,
-            quantity: 0
+    // function calculateTotalPrice(items: any) {
+    //     let totalprice = {
+    //         price: 0,
+    //         quantity: 0
 
-        }
-        // Use reduce to accumulate the total price
-        const totalPrice = items.reduce((total: any, item: any) => {
-            // Convert Price to a number and multiply by quantity
-            const itemTotal = Number(item.Price) * item.quantity;
+    //     }
+    //     // Use reduce to accumulate the total price
+    //     const totalPrice = items.reduce((total: any, item: any) => {
+    //         // Convert Price to a number and multiply by quantity
+    //         const itemTotal = Number(item.Price) * item.quantity;
 
-            totalprice = {
-                price: total + itemTotal,
-                quantity: item.quantity
-            }
+    //         totalprice = {
+    //             price: total + itemTotal,
+    //             quantity: item.quantity
+    //         }
 
-            // Add the item's total to the running total
-            return totalprice;
-        }, 0); // Initial value of total is 0
+    //         // Add the item's total to the running total
+    //         return totalprice;
+    //     }, 0); // Initial value of total is 0
 
-        return totalPrice;
-    }
+    //     return totalPrice;
+    // }
 
     const totaalQuantity = cartProducts.reduce((total: any, item: any) => total + item.quantity, 0)
     const totalPrice = cartProducts.reduce((preve: any, curr: any) => preve + (curr.quantity * curr?.Price), 0)
@@ -85,7 +85,7 @@ const Cart = () => {
                         {/***view product */}
                         <div className='w-full max-w-6xl'>
                             {
-                                cartProducts.map((product: any, index: number) => {
+                                cartProducts.map((product: any) => {
                                     return (
                                         <div key={product?._id + "Add To Cart Loading"} className='w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]'>
                                             <div className='w-32 h-32 bg-slate-200'>
